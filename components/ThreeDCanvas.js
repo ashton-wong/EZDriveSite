@@ -190,8 +190,8 @@ export default function ThreeDCanvas({ modelPath = '../models/phone.glb', disabl
         }
 
         // Standalone behavior: create local ScrollTrigger timeline
-        const extraPause = window.innerHeight // one viewport height pause after flip
-        const scrollEnd = 1200 + extraPause
+        const extraPause = window.innerHeight + window.innerHeight // one viewport height pause after flip
+        const scrollEnd = 2400 + extraPause
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -255,41 +255,60 @@ export default function ThreeDCanvas({ modelPath = '../models/phone.glb', disabl
             const first = blocks[0]
             if (first) gsap.set(first, { opacity: 1, scale: 1, rotationX: 0, filter: 'blur(0px)', yPercent: 0 })
 
-            // attach a single scrubbed timeline per block: move up from bottom -> center -> leave upward
-            blocks.forEach((block) => {
+            // attach a single scrubbed timeline per block: move up from bottom -> center
+            // NOTE: removed the "leave upward" phase so revealed blocks do not roll back/leave.
+            blocks.forEach((block, i) => {
+              // unique id for each ScrollTrigger so we can reference/kill it later
+              const stId = `reveal-${Date.now()}-${i}`
+
               const bt = gsap.timeline({
                 scrollTrigger: {
+                  id: stId,
                   trigger: block,
-                  // start when block's bottom reaches bottom of viewport (so it comes up from below)
-                  start: 'bottom bottom',
-                  // make the scrub very long: 3x viewport height so transitions are slow and smooth
-                  end: () => `+=${Math.round(window.innerHeight * 3)}`,
+                  // start slightly earlier so the roll-up begins as the block enters view
+                  start: 'top bottom',
+                  // ensure the per-block scrub ends before the main pinned timeline finishes
+                  end: () => `+=${Math.min(Math.round(window.innerHeight * 3), Math.max(400, Math.round(scrollEnd * 0.6)))}`,
                   scrub: true
                 }
               })
 
-              // approach center: from below (yPercent positive) to centered
+              // store id on element for later lookup
+              try { block.dataset.stId = stId } catch (e) {}
+
+              // approach center: from below (yPercent positive) to centered (fully visible)
               bt.to(block, {
                 yPercent: 0,
                 opacity: 1,
                 scale: 1,
                 rotationX: 0,
                 filter: 'blur(0px)',
-                ease: 'power3.out',
-                duration: 1.5
-              })
-
-              // leave center: continue upward (yPercent negative) and fade/blur
-              bt.to(block, {
-                yPercent: -40,
-                opacity: 0.1,
-                scale: 0.8,
-                rotationX: 45,
-                filter: 'blur(8px)',
-                ease: 'power3.in',
-                duration: 1.5
+                // slower, smoother reveal so it feels deliberate while tied to scroll
+                ease: 'power2.out',
+                duration: 3.5
               })
             })
+
+            // Ensure that when the main pinned canvas reaches its end, all blocks are fully revealed and do not start rolling back.
+            // This forces all blocks to final visible state at the end of the canvas viewport.
+            const containerRevealTrigger = ScrollTrigger.create({
+              trigger: containerRef.current,
+              start: 'top top',
+              end: `+=${scrollEnd}`,
+              onUpdate(self) {
+                if (self.progress >= 0.995) {
+                  gsap.set(blocks, { opacity: 1, scale: 1, rotationX: 0, filter: 'blur(0px)', yPercent: 0 })
+                  // kill each individual block ScrollTrigger so they won't animate further
+                  blocks.forEach(b => {
+                    const st = ScrollTrigger.getById(b.dataset.stId)
+                    if (st) st.kill()
+                  })
+                }
+              }
+            })
+
+            // store reference for cleanup
+            containerRef.current._containerRevealTrigger = containerRevealTrigger
           }, 'afterFlip+=0.01')
         }
 
@@ -297,6 +316,11 @@ export default function ThreeDCanvas({ modelPath = '../models/phone.glb', disabl
           window.removeEventListener('resize', handleResize)
           tl.scrollTrigger && tl.scrollTrigger.kill()
           tl.kill()
+          // cleanup the container-level reveal trigger if we created it
+          if (containerRef.current && containerRef.current._containerRevealTrigger) {
+            containerRef.current._containerRevealTrigger.kill()
+            delete containerRef.current._containerRevealTrigger
+          }
         }
       }, containerRef)
     }

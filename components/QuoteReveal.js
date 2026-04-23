@@ -7,26 +7,22 @@ export default function QuoteReveal({
   formUrl = ''
 }) {
   return (
-    <section className="min-h-screen bg-white">
-      <div className="w-full h-screen">
-        <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-          <div className="flex items-center justify-center px-8 md:px-16">
-            <div className="text-center md:text-left max-w-xl">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-[#1d1d1f]" style={{ fontFamily: 'Inter, sans-serif', fontSize: '60px' }}>{title}</h1>
-              <p className="mt-6 text-lg text-gray-600 text-[#86868b]" style={{ fontFamily: 'Inter, sans-serif', fontSize: '30px' }}>{tagline}</p>
-            </div>
-            <div className="w-full h-full bg-gray-50 overflow-hidden">
-              {formUrl ? (
-                <iframe
-                  src={formUrl}
-                  title="Interest Form"
-                  className="w-full h-full border-0"
-                  style={{ minHeight: '100%' }}
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-500">No form URL provided. Pass `formUrl` prop to embed your Google Form.</div>
-              )}
-            </div>
+    <section className="min-h-screen bg-white flex items-center justify-center">
+      <div className="w-full max-w-4xl px-6">
+        <div className="flex flex-col items-center text-center gap-0">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-[#1d1d1f]" style={{ fontFamily: 'Inter, sans-serif' }}>{title}</h1>
+          <p className="text-lg text-gray-600 text-[#86868b]" style={{ fontFamily: 'Inter, sans-serif' }}>{tagline}</p>
+
+          <div className="w-full max-w-3xl h-[70vh] bg-gray-50 rounded shadow overflow-hidden">
+            {formUrl ? (
+              <iframe
+                src={formUrl}
+                title="Interest Form"
+                className="w-full h-full border-0"
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full text-gray-500">No form URL provided. Pass `formUrl` prop to embed your Google Form.</div>
+            )}
           </div>
         </div>
       </div>
