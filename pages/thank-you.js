@@ -1,12 +1,21 @@
+import React, { useEffect } from 'react'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { initAnalytics, trackEvent } from '../lib/analytics'
 
 export default function ThankYou() {
   useEffect(() => {
+    initAnalytics()
     try {
-      if (window && window.gtag) {
-        window.gtag('event', 'preorder_submit', { method: 'google_form' })
+      if (!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) return
+      const params = {}
+      if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const utm = url.searchParams.get('utm_campaign')
+        const variant = url.searchParams.get('variant')
+        if (utm) params.utm_campaign = utm
+        if (variant) params.variant = variant
       }
+      trackEvent('preorder_submit', params)
     } catch (e) {
       // silent
     }

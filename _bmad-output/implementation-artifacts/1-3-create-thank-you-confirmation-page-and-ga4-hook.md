@@ -3,6 +3,7 @@
 - **Story Key:** 1-3-create-thank-you-confirmation-page-and-ga4-hook
 - **Title:** Create `/thank-you` confirmation page and GA4 conversion hook
 - **Status:** ready-for-dev
+ - **Status:** review
 - **Owner:** Ashton
 - **Created:** 2026-05-14
 
@@ -37,3 +38,29 @@
 **Next Steps**
 1. Implement `pages/thank-you.js` with confirmation copy and `trackEvent('preorder_submit', {...})` on mount.
 2. Verify GA4 DebugView logs the `preorder_submit` event without PII.
+
+**Tasks/Subtasks**
+- [x] Implement `pages/thank-you.js` with confirmation copy and client-side `preorder_submit` event on mount.
+- [x] Ensure `lib/analytics.js` exposes `initAnalytics()` and `trackEvent()` and that `trackEvent` strips PII.
+- [x] Add unit test `__tests__/thank-you.test.jsx` verifying `trackEvent` is called on mount when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is present.
+
+**Dev Agent Record**
+
+**Debug Log**
+- 2026-05-14T17:30:00Z: Started implementation of `pages/thank-you.js`. Updated `sprint-status.yaml` to `in-progress`.
+- 2026-05-14T17:35:00Z: Added unit test `__tests__/thank-you.test.jsx` (RED); ran test suite — test initially failed as expected.
+- 2026-05-14T17:40:00Z: Implemented `pages/thank-you.js` and re-ran tests (GREEN); unit test passed.
+
+**Completion Notes**
+- Implemented `pages/thank-you.js` that fires `preorder_submit` on mount using `lib/analytics.trackEvent` with non-PII params extracted from the URL (`variant`, `utm_campaign`).
+ - Implemented `pages/thank-you.js` that fires `preorder_submit` on mount using `lib/analytics.trackEvent` with non-PII params extracted from the URL (`variant`, `utm_campaign`).
+- Verified `lib/analytics.js` no-op behavior when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is missing; test environment uses mocked analytics to assert call.
+- Added unit test confirming `trackEvent` invocation on mount.
+
+**File List**
+- pages/thank-you.js (added)
+- __tests__/thank-you.test.jsx (added)
+- _bmad-output/implementation-artifacts/sprint-status.yaml (modified)
+
+**Change Log**
+- 2026-05-14: Implemented `/thank-you` confirmation page and GA4 hook, added unit test, updated sprint-status to `in-progress`.

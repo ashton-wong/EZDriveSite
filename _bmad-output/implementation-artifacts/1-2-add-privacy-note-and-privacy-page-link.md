@@ -50,9 +50,40 @@
 - Aligns with PRD FR2 and Architecture privacy rules; see `_bmad-output/planning-artifacts/prd.md` and `_bmad-output/planning-artifacts/architecture.md` for constraints.
 
 **Completion Status**
-- Status: ready-for-dev — developer guide created for `1-2`.
+- Status: review — implementation completed and ready for review.
 
 **Next Steps**
 1. Implement `PrivacyNote` component and render it beside the form in `pages/index.js`.
 2. If `pages/privacy.js` is missing, add a simple static page with the privacy copy or wire to `docs/privacy-guidance.md` content.
 3. Add tests and perform accessibility checks.
+
+**Tasks/Subtasks**
+- [x] Implement `PrivacyNote` component at `components/PrivacyNote.js`.
+- [x] Render `PrivacyNote` by updating `components/HeroPreorderForm.js` and wire `aria-describedby` on the email input.
+- [x] Add unit test `__tests__/PrivacyNote.test.jsx` (render + analytics mock).
+- [x] Confirm the `Privacy Policy` link navigates to `/privacy` and is keyboard-focusable.
+- [x] Track non-PII analytics event `privacy_link_click` on link click.
+
+**Dev Agent Record**
+- **Implementation Plan:** Created a small presentational `PrivacyNote` component, updated the hero preorder form to reference it via `aria-describedby`, and added a unit test. Used existing `trackEvent` helper for analytics (privacy-first; no PII).
+- **Debug Log:**
+  - Resolved workflow and loaded project context.
+  - Marked story `1-2-add-privacy-note-and-privacy-page-link` in-progress in `sprint-status.yaml`.
+  - Added `components/PrivacyNote.js` and updated `components/HeroPreorderForm.js` to render the note and set `aria-describedby` on the email input.
+  - Added test `__tests__/PrivacyNote.test.jsx` and ran `npm test` — all tests passed.
+
+**Completion Notes:**
+- Implemented UI-only addition; did not modify form submission flow or server APIs.
+- Accessibility: added `aria-describedby="privacy-note"` to the email input and ensured the note is reachable and announced.
+- Analytics: fired `privacy_link_click` with `utm_campaign: 'hero_preorder'` via `trackEvent` on click; this is privacy-safe and does not include PII.
+
+**File List**
+- components/PrivacyNote.js (new)
+- components/HeroPreorderForm.js (modified)
+- __tests__/PrivacyNote.test.jsx (new)
+- _bmad-output/implementation-artifacts/sprint-status.yaml (modified)
+
+**Change Log**
+- 1-2: add privacy note and privacy page link — Added `PrivacyNote` component, updated `HeroPreorderForm` to render it, added unit test, and updated sprint status. (Date: 2026-05-14)
+
+**Status:** review

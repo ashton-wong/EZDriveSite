@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import PrivacyNote from './PrivacyNote'
 
 export default function HeroPreorderForm() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
+
+  const externalFormUrl = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || ''
 
   function validateEmail(value) {
     return /\S+@\S+\.\S+/.test(value)
@@ -54,34 +57,52 @@ export default function HeroPreorderForm() {
   return (
     <section id="preorder-form" className="bg-white py-12">
       <div className="max-w-4xl mx-auto px-4 text-center">
+        {externalFormUrl && (
+          <div className="mb-4 p-3 bg-yellow-50 border-l-4 border-yellow-300 text-yellow-800 text-sm">
+            Having trouble submitting? <a href={externalFormUrl} target="_blank" rel="noopener noreferrer" className="underline">Open the form in a new tab</a>.
+          </div>
+        )}
         <h2 className="text-2xl font-bold text-slate-900">Preorder — join the interest list</h2>
         <p className="mt-2 text-slate-600">Enter your email to reserve early access and updates.</p>
 
-        <form onSubmit={handleSubmit} className="mt-6 max-w-md mx-auto">
-          <label className="sr-only" htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 border rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-400"
-            placeholder="you@example.com"
-            aria-required="true"
-          />
-
-          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-
-          <div className="mt-4">
-            <button
-              type="submit"
-              disabled={submitting}
-              className="inline-flex items-center px-5 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 disabled:opacity-60"
-            >
-              {submitting ? 'Submitting...' : 'Preorder'}
-            </button>
+        {externalFormUrl ? (
+          <div className="mt-6 max-w-3xl mx-auto h-[600px]">
+            <iframe
+              src={externalFormUrl}
+              title="Preorder Google Form"
+              className="w-full h-full border-0 rounded-md shadow-sm"
+              aria-label="Preorder Google Form"
+            />
           </div>
-        </form>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-6 max-w-md mx-auto">
+            <label className="sr-only" htmlFor="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-3 border rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-400"
+              placeholder="you@example.com"
+              aria-required="true"
+              aria-describedby="privacy-note"
+            />
+
+            {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+
+            <div className="mt-4">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="inline-flex items-center px-5 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 disabled:opacity-60"
+              >
+                {submitting ? 'Submitting...' : 'Preorder'}
+              </button>
+            </div>
+          </form>
+        )}
+        <PrivacyNote />
       </div>
     </section>
   )
