@@ -52,7 +52,7 @@ export default function HeroPreorderForm() {
   }
 
   return (
-    <section className="bg-white py-12">
+    <section id="preorder-form" className="bg-white py-12">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <h2 className="text-2xl font-bold text-slate-900">Preorder — join the interest list</h2>
         <p className="mt-2 text-slate-600">Enter your email to reserve early access and updates.</p>

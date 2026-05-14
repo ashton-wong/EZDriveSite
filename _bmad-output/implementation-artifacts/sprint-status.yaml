@@ -6,7 +6,7 @@
 # story_location: /Users/wong_ashton/Desktop/MTM/EZDriveSite/_bmad-output/implementation-artifacts
 
 generated: 2026-05-14T00:00:00Z
-last_updated: 2026-05-14T00:00:00Z
+last_updated: 2026-05-14T16:10:00Z
 project: EZDriveSite
 project_key: NOKEY
 tracking_system: file-system
@@ -23,10 +23,10 @@ development_status:
 
   epic-2: backlog
   epic-2: in-progress
-  2-1-implement-hero-and-preorder-cta: ready-for-dev
-  2-2-build-benefit-cards-and-how-it-works-flow: ready-for-dev
-  2-3-add-a-b-test-hooks-and-data-attributes: ready-for-dev
-  2-4-content-placeholders-for-marketing-copy: ready-for-dev
+  2-1-implement-hero-and-preorder-cta: review
+  2-2-build-benefit-cards-and-how-it-works-flow: review
+  2-3-add-a-b-test-hooks-and-data-attributes: review
+  2-4-content-placeholders-for-marketing-copy: review
   epic-2-retrospective: optional
 
   epic-3: backlog

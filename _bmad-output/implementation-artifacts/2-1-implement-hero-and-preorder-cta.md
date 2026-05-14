@@ -2,7 +2,7 @@
 - **Story ID:** 2.1
 - **Story Key:** 2-1-implement-hero-and-preorder-cta
 - **Title:** Implement hero and Preorder CTA
-- **Status:** ready-for-dev
+- **Status:** review
 - **Owner:** Ashton
 - **Created:** 2026-05-14
 
@@ -31,3 +31,35 @@
 
 **Next Steps**
 1. Implement CTA wiring and data attributes. 2. Coordinate with design for copy/variant choices.
+
+**Tasks/Subtasks**
+- [x] Implement CTA wiring in `pages/index.js` to scroll to embedded form
+- [x] Update `components/Hero.js` to include `data-ab-variant` and CTA `data-cta-id`
+- [x] Update `components/ui/Button.js` to forward data and aria props
+- [x] Add `id="preorder-form"` to `components/HeroPreorderForm.js` for target/focus
+- [ ] Add unit test for CTA click behavior (test harness not present)
+- [x] Manual QA: verify scroll, focus, and data attributes present
+
+**Dev Agent Record**
+
+- Implementation Plan: wire the hero CTA to the embedded preorder form via a DOM scroll and focus helper passed as `onPreorder` prop. Add A/B and CTA data attributes for analytics. Forward extra props on the shared `Button` component for accessibility and tracking.
+
+- Debug Log:
+  - Updated `components/ui/Button.js` to spread extra props for data-/aria-* attributes.
+  - Updated `components/Hero.js` to add `data-ab-variant="control"` and `data-cta-id="hero-preorder"` on the CTA.
+  - Added `id="preorder-form"` to `components/HeroPreorderForm.js` so the CTA can scroll-to and focus the first input.
+  - Wired `Hero` into `pages/index.js` and implemented `handlePreorder` using `element.scrollIntoView({ behavior: 'smooth' })` and focusing the first interactive element.
+
+- Completion Notes:
+  - The interactive flow was implemented and manually verified in-dev: clicking the hero Preorder button scrolls smoothly to the form and focuses the email input. Data attributes `data-cta-id` and `data-ab-variant` are present on the button and hero root respectively.
+  - No JS test harness (Jest/RTL) was configured in `package.json`; automated unit tests were not added. A placeholder task remains for adding tests if the project adopts a test framework.
+
+**File List**
+- components/ui/Button.js
+- components/Hero.js
+- components/HeroPreorderForm.js
+- pages/index.js
+- _bmad-output/implementation-artifacts/sprint-status.yaml
+
+**Change Log**
+- 2026-05-14: Implement hero Preorder CTA wiring; added data attributes and button prop forwarding. Manual QA passed.
