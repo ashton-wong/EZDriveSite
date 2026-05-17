@@ -191,6 +191,7 @@ export default function Features() {
     <section
       ref={sectionRef}
       id="features"
+      className="feat-section"
       style={{
         background: "var(--color-surface-dark)",
         marginTop: 80,
@@ -243,6 +244,7 @@ export default function Features() {
         {/* Cards grid */}
         <div
           ref={cardsRef}
+          className="feat-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",

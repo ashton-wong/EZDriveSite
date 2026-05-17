@@ -70,6 +70,7 @@ export default function Pricing() {
     <section
       ref={sectionRef}
       id="pricing"
+      className="pr-section"
       style={{
         background: "var(--color-ink)",
         padding: "96px 32px",
@@ -105,6 +106,7 @@ export default function Pricing() {
         {/* Top cards */}
         <div
           ref={topCardsRef}
+          className="pr-top-grid"
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
         >
           {/* Solo */}
@@ -257,6 +259,7 @@ export default function Pricing() {
         {/* Fleets (wide) */}
         <div
           ref={wideRef}
+          className="pr-fleet-row"
           style={{
             marginTop: 16,
             background: "#0d0d0d",

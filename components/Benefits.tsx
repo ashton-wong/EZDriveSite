@@ -90,9 +90,11 @@ export default function Benefits() {
     <section
       ref={sectionRef}
       id="how"
+      className="benefits-section"
       style={{ padding: "96px 32px" }}
     >
       <div
+        className="benefits-grid"
         style={{
           maxWidth: "var(--container-max)",
           margin: "0 auto",

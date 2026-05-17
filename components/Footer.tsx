@@ -60,6 +60,7 @@ export default function Footer() {
       <div style={{ maxWidth: "var(--container-max)", margin: "0 auto" }}>
         <div
           ref={gridRef}
+          className="footer-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1.4fr 1fr 1fr 1fr",

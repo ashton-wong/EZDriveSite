@@ -79,6 +79,7 @@ export default function PreorderForm() {
     <section
       ref={sectionRef}
       id="preorder"
+      className="preorder-section"
       style={{
         background: "var(--color-surface-dark)",
         padding: "96px 32px",

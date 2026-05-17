@@ -91,13 +91,28 @@ export default function OBDAnimation() {
       const hx = hr.left - cr.left + hr.width / 2;
       const hy = hr.top - cr.top + hr.height / 2;
       const n = 8;
+      const isVertical = cr.height > cr.width;
 
       for (let i = 0; i < n; i++) {
         setTimeout(() => {
           const p = document.createElement("div");
           p.className = "hz-pt";
           let sx, sy, ex, ey;
-          if (!toRight) {
+          if (isVertical) {
+            if (!toRight) {
+              // top panel → hub: particles gather from across raw panel and flow down
+              sx = cr.width * 0.1 + Math.random() * cr.width * 0.8;
+              sy = cr.height * 0.04 + Math.random() * cr.height * 0.22;
+              ex = hx + (Math.random() - 0.5) * 8;
+              ey = hy - 26 + Math.random() * 8;
+            } else {
+              // hub → bottom panel: particles disperse downward into output panel
+              sx = hx + (Math.random() - 0.5) * 8;
+              sy = hy + 18 + Math.random() * 8;
+              ex = cr.width * 0.1 + Math.random() * cr.width * 0.8;
+              ey = cr.height * 0.72 + Math.random() * cr.height * 0.22;
+            }
+          } else if (!toRight) {
             sx = cr.width * 0.06 + Math.random() * cr.width * 0.32;
             sy = hy + (Math.random() - 0.5) * 90;
             ex = hx - 26 + Math.random() * 8;

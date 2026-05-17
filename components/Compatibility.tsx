@@ -47,9 +47,11 @@ export default function Compatibility() {
     <section
       ref={sectionRef}
       id="stories"
+      className="compat-section"
       style={{ padding: "96px 32px" }}
     >
       <div
+        className="compat-grid"
         style={{
           maxWidth: "var(--container-max)",
           margin: "0 auto",
@@ -96,6 +98,7 @@ export default function Compatibility() {
         {/* Right: brand grid */}
         <div
           ref={gridRef}
+          className="brand-grid"
           style={{
             background: "var(--color-surface-soft)",
             borderRadius: "var(--radius-xl)",

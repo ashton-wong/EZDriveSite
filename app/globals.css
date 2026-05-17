@@ -268,3 +268,47 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
+/* ── MOBILE RESPONSIVE (max-width: 767px) ──── */
+@media (max-width: 767px) {
+
+  /* Nav */
+  .nav-links       { display: none !important; }
+  .nav-logo-img    { height: 44px !important; }
+
+  /* Hero */
+  .hero-section    { padding: 48px 20px 0 !important; }
+  .hero-h1         { letter-spacing: -1.5px !important; }
+
+  /* OBD Animation card — vertical stack (raw top, hub middle, output bottom) */
+  .hz-card         { grid-template-columns: 1fr !important; grid-template-rows: auto 72px auto !important; min-height: unset !important; }
+  .hz-raw          { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; padding: 20px !important; }
+  .hz-center-col   { flex-direction: row !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.06) !important; }
+  .hz-vert-line    { width: auto !important; height: 1px !important; background: linear-gradient(to right, transparent, rgba(78,168,224,0.18), transparent) !important; }
+  .hz-hub-label    { display: none !important; }
+  .hz-eng          { padding: 20px !important; }
+
+  /* Features */
+  .feat-section    { padding: 64px 20px !important; }
+  .feat-grid       { grid-template-columns: 1fr !important; }
+
+  /* Benefits */
+  .benefits-section { padding: 64px 20px !important; }
+  .benefits-grid    { grid-template-columns: 1fr !important; gap: 48px !important; }
+
+  /* Pricing */
+  .pr-section      { padding: 64px 20px !important; }
+  .pr-top-grid     { grid-template-columns: 1fr !important; }
+  .pr-fleet-row    { grid-template-columns: 1fr !important; gap: 24px !important; padding: 28px 24px !important; }
+
+  /* Compatibility */
+  .compat-section  { padding: 64px 20px !important; }
+  .compat-grid     { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .brand-grid      { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Footer */
+  .footer-grid     { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+
+  /* Pre-order */
+  .preorder-section { padding: 64px 20px !important; }
+}

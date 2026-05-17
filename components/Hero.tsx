@@ -63,6 +63,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
+      className="hero-section"
       style={{
         maxWidth: "var(--container-max)",
         margin: "0 auto",
@@ -103,6 +104,7 @@ export default function Hero() {
       {/* H1 */}
       <h1
         ref={h1Ref}
+        className="hero-h1"
         style={{
           fontFamily: "var(--font-display)",
           fontWeight: 500,

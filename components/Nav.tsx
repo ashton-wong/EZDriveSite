@@ -69,6 +69,7 @@ export default function Nav() {
             alt="EZDrive"
             width={160}
             height={75}
+            className="nav-logo-img"
             style={{ height: 75, width: "auto", mixBlendMode: "multiply" }}
             priority
           />
@@ -76,6 +77,7 @@ export default function Nav() {
 
         <ul
           ref={linksRef}
+          className="nav-links"
           style={{
             display: "flex",
             gap: 32,
