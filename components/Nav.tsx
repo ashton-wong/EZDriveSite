@@ -67,9 +67,9 @@ export default function Nav() {
           <Image
             src="/ezdrive-logo.png"
             alt="EZDrive"
-            width={120}
-            height={34}
-            style={{ height: 34, width: "auto", mixBlendMode: "multiply" }}
+            width={160}
+            height={75}
+            style={{ height: 75, width: "auto", mixBlendMode: "multiply" }}
             priority
           />
         </a>
