@@ -16,6 +16,8 @@ export default function PreorderForm() {
   const successRef = useRef<HTMLDivElement>(null);
 
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -33,12 +35,13 @@ export default function PreorderForm() {
     return () => ctx.revert();
   }, []);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.querySelector<HTMLInputElement>("#po-name");
     const email = form.querySelector<HTMLInputElement>("#po-email");
     const plan = form.querySelector<HTMLSelectElement>("#po-plan");
+    const phone = form.querySelector<HTMLInputElement>("#po-phone");
 
     const newErrors: Record<string, boolean> = {};
     if (!name?.value.trim()) newErrors["name"] = true;
@@ -47,6 +50,35 @@ export default function PreorderForm() {
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
+
+    setLoading(true);
+    setServerError("");
+
+    try {
+      const res = await fetch("/api/preorder", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name!.value,
+          email: email!.value,
+          plan: plan!.value,
+          phone: phone?.value || "",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setServerError(data.error || "Something went wrong. Please try again.");
+        setLoading(false);
+        return;
+      }
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+      setLoading(false);
+      return;
+    }
+
+    setLoading(false);
 
     // Animate form out, success in
     gsap.to(formRef.current, {
@@ -253,11 +285,17 @@ export default function PreorderForm() {
             </div>
             <button
               type="submit"
+              disabled={loading}
               className="btn btn-on-color"
-              style={{ marginTop: 4, width: "100%" }}
+              style={{ marginTop: 4, width: "100%", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
             >
-              Reserve EZDrive →
+              {loading ? "Submitting…" : "Reserve EZDrive →"}
             </button>
+            {serverError && (
+              <p style={{ fontSize: 13, color: "rgba(239,68,68,0.85)", marginTop: 4, textAlign: "center" }}>
+                {serverError}
+              </p>
+            )}
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>
               No payment now. We&apos;ll reach out when your order is ready.
             </p>

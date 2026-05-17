@@ -36,12 +36,31 @@ Car owners (1996+ gas vehicles) who want clarity on warning lights without needi
 - Pre-order: ScrollTrigger fade in form
 - Nav: slides down from top on load
 
+## Tech Stack (updated)
+- **Database:** Vercel Postgres / Neon (`@neondatabase/serverless` — Vercel migrated their Postgres product to Neon)
+- **API:** Next.js Route Handler at `/app/api/preorder/route.ts`
+
 ## Data models
-No database. Pre-order form is front-end only (shows success state on submit). No backend.
+
+### `preorders` table (Vercel Postgres)
+| Column | Type | Notes |
+|---|---|---|
+| id | SERIAL PRIMARY KEY | auto-increment |
+| name | VARCHAR(255) | required |
+| email | VARCHAR(255) | required |
+| plan | VARCHAR(50) | Solo / Family / Fleet |
+| phone | VARCHAR(50) | optional |
+| created_at | TIMESTAMP | defaults to NOW() |
+
+## API Routes
+- `POST /api/preorder` — validates fields, inserts a row into `preorders`, returns `{ success: true }`
+
+## Environment Variables Required
+- `POSTGRES_URL` (and related Vercel Postgres vars) — set automatically when you link a Vercel Postgres DB in the Vercel dashboard
 
 ## What "done" looks like
 - `npm run build` passes with no TypeScript errors
 - `npm run dev` serves at localhost:3000 with all sections rendered
 - All GSAP animations trigger correctly on scroll and page load
 - OBD animation loops seamlessly
-- Pre-order form validates and shows success state
+- Pre-order form POSTs to `/api/preorder`, row appears in Vercel Postgres, success state shown
