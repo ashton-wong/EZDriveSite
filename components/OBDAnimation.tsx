@@ -243,7 +243,7 @@ export default function OBDAnimation() {
         }
 
         // Phase 5: hold for 4 seconds
-        await wait(3500);
+        await wait(3000);
         if (!runningRef.current) return;
 
         // Fade out
@@ -305,9 +305,13 @@ export default function OBDAnimation() {
       {/* Right: Plain English output */}
       <div className="hz-eng">
         <div className="hz-zone-label">EZDrive says</div>
-        <div ref={engMainRef} className="hz-eng-main" />
-        <div ref={engSubRef} className="hz-eng-sub" />
-        <div ref={engBadgeRef} className="hz-eng-badge" />
+        <div className="hz-eng-body">
+          <div className="hz-eng-text">
+            <div ref={engMainRef} className="hz-eng-main" />
+            <div ref={engSubRef} className="hz-eng-sub" />
+          </div>
+          <div ref={engBadgeRef} className="hz-eng-badge" />
+        </div>
       </div>
 
       {/* Particle overlay */}

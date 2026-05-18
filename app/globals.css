@@ -206,8 +206,19 @@ body {
   padding: 32px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+}
+.hz-eng-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+.hz-eng-text {
+  display: flex;
+  flex-direction: column;
   gap: 6px;
+  flex: 1;
 }
 .hz-eng-main {
   font-family: var(--font-display);
@@ -237,10 +248,10 @@ body {
   padding: 5px 12px;
   font-size: 12px;
   font-weight: 600;
-  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
   opacity: 0;
   transition: opacity 320ms ease-out 160ms;
-  margin-top: 6px;
 }
 .hz-eng-badge.hz-vis { opacity: 1; }
 .hz-badge-watch { background: rgba(245,158,11,0.15); color: #f59e0b; }
