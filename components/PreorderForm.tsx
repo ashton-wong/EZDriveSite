@@ -127,7 +127,7 @@ export default function PreorderForm() {
             marginBottom: 16, opacity: 0,
           }}
         >
-          Pre-order EZDrive
+          Pre-order MotorLink
         </div>
         <h2
           ref={h2Ref}
@@ -289,7 +289,7 @@ export default function PreorderForm() {
               className="btn btn-on-color"
               style={{ marginTop: 4, width: "100%", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
             >
-              {loading ? "Submitting…" : "Reserve EZDrive →"}
+              {loading ? "Submitting…" : "Reserve MotorLink →"}
             </button>
             {serverError && (
               <p style={{ fontSize: 13, color: "rgba(239,68,68,0.85)", marginTop: 4, textAlign: "center" }}>
@@ -338,7 +338,7 @@ export default function PreorderForm() {
             You&apos;re on the list.
           </div>
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
-            We&apos;ll email you as soon as your EZDrive is ready to ship.
+            We&apos;ll email you as soon as your MotorLink is ready to ship.
           </div>
         </div>
       </div>
