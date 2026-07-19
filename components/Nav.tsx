@@ -66,7 +66,7 @@ export default function Nav() {
         <a ref={logoRef} href="#" style={{ display: "block", flexShrink: 0 }}>
           <Image
             src="/ezdrive-logo.png"
-            alt="EZDrive"
+            alt="MotorLink"
             width={160}
             height={75}
             className="nav-logo-img"
@@ -117,7 +117,7 @@ export default function Nav() {
 
         <div ref={ctaRef} style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
           <a className="btn btn-primary" href="#preorder">
-            Get EZDrive →
+            Get MotorLink →
           </a>
         </div>
       </nav>
