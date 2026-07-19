@@ -150,7 +150,7 @@ export default function Hero() {
         }}
       >
         <a className="btn btn-primary" href="#preorder">
-          Get EZDrive →
+          Get MotorLink →
         </a>
         <a className="btn btn-secondary" href="#features">
           See how it works
