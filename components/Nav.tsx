@@ -65,12 +65,12 @@ export default function Nav() {
       >
         <a ref={logoRef} href="#" style={{ display: "block", flexShrink: 0 }}>
           <Image
-            src="/ezdrive-logo.png"
+            src="/motorlink-logo.png"
             alt="MotorLink"
-            width={160}
-            height={75}
+            width={48}
+            height={48}
             className="nav-logo-img"
-            style={{ height: 75, width: "auto", mixBlendMode: "multiply" }}
+            style={{ height: 48, width: "auto", mixBlendMode: "multiply" }}
             priority
           />
         </a>
