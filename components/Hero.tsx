@@ -149,8 +149,8 @@ export default function Hero() {
           opacity: 0,
         }}
       >
-        <a className="btn btn-primary" href="#preorder">
-          Get EZDrive →
+        <a className="btn btn-primary" href="/#waitlist">
+          Join the waitlist →
         </a>
         <a className="btn btn-secondary" href="#features">
           See how it works

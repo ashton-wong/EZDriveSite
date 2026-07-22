@@ -110,7 +110,7 @@ export default function PreorderForm() {
   return (
     <section
       ref={sectionRef}
-      id="preorder"
+      id="waitlist"
       className="preorder-section"
       style={{
         background: "var(--color-surface-dark)",
@@ -127,7 +127,7 @@ export default function PreorderForm() {
             marginBottom: 16, opacity: 0,
           }}
         >
-          Pre-order EZDrive
+          Join the waitlist
         </div>
         <h2
           ref={h2Ref}
@@ -146,7 +146,7 @@ export default function PreorderForm() {
             marginTop: 16, opacity: 0,
           }}
         >
-          From guessing to knowing in minutes. Reserve yours now.
+          From guessing to knowing in minutes. Join the waitlist for early access.
         </p>
 
         {!submitted ? (
@@ -289,7 +289,7 @@ export default function PreorderForm() {
               className="btn btn-on-color"
               style={{ marginTop: 4, width: "100%", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
             >
-              {loading ? "Submitting…" : "Reserve EZDrive →"}
+              {loading ? "Submitting…" : "Join the waitlist →"}
             </button>
             {serverError && (
               <p style={{ fontSize: 13, color: "rgba(239,68,68,0.85)", marginTop: 4, textAlign: "center" }}>
@@ -297,7 +297,7 @@ export default function PreorderForm() {
               </p>
             )}
             <p style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", marginTop: 4 }}>
-              No payment now. We&apos;ll reach out when your order is ready.
+              No payment, no commitment. We&apos;ll email you when your spot opens up.
             </p>
           </form>
         ) : null}
@@ -338,7 +338,7 @@ export default function PreorderForm() {
             You&apos;re on the list.
           </div>
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
-            We&apos;ll email you as soon as your EZDrive is ready to ship.
+            We&apos;ll email you as soon as MotorLink is ready for you.
           </div>
         </div>
       </div>

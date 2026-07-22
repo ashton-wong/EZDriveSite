@@ -63,14 +63,14 @@ export default function Nav() {
           gap: 32,
         }}
       >
-        <a ref={logoRef} href="#" style={{ display: "block", flexShrink: 0 }}>
+        <a ref={logoRef} href="/" style={{ display: "block", flex: 1 }}>
           <Image
-            src="/ezdrive-logo.png"
-            alt="EZDrive"
-            width={160}
-            height={75}
+            src="/motor-link-logo.png"
+            alt="MotorLink"
+            width={48}
+            height={48}
             className="nav-logo-img"
-            style={{ height: 75, width: "auto", mixBlendMode: "multiply" }}
+            style={{ height: 48, width: "auto", mixBlendMode: "multiply" }}
             priority
           />
         </a>
@@ -87,10 +87,10 @@ export default function Nav() {
           }}
         >
           {[
-            { label: "Features", href: "#features" },
-            { label: "How it works", href: "#how" },
-            { label: "Pricing", href: "#pricing" },
-            { label: "Compatibility", href: "#stories" },
+            { label: "Features", href: "/#features" },
+            { label: "How it works", href: "/#how" },
+            { label: "Pricing", href: "/#pricing" },
+            { label: "Compatibility", href: "/#stories" },
           ].map((link) => (
             <li key={link.href}>
               <a
@@ -115,9 +115,9 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div ref={ctaRef} style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
-          <a className="btn btn-primary" href="#preorder">
-            Get EZDrive →
+        <div ref={ctaRef} style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 16, flex: 1 }}>
+          <a className="btn btn-primary" href="/#waitlist">
+            Join the waitlist →
           </a>
         </div>
       </nav>

@@ -53,7 +53,7 @@ export default function Pricing() {
   }, []);
 
   const BULLETS_SOLO = [
-    "EZDrive scanner included",
+    "MotorLink scanner included",
     "iOS & Android app",
     "Plain-English fault codes",
     "Maintenance reminders",
@@ -168,11 +168,11 @@ export default function Pricing() {
             </ul>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Solo")}
               style={{ width: "100%" }}
             >
-              Get Solo
+              Join waitlist — Solo
             </a>
           </div>
 
@@ -247,11 +247,11 @@ export default function Pricing() {
             </ul>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Family")}
               style={{ width: "100%" }}
             >
-              Get Family
+              Join waitlist — Family
             </a>
           </div>
         </div>
@@ -313,11 +313,11 @@ export default function Pricing() {
             </div>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Fleet")}
               style={{ whiteSpace: "nowrap" }}
             >
-              Get Fleet
+              Join waitlist — Fleet
             </a>
           </div>
         </div>

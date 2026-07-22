@@ -1,7 +1,7 @@
-# EZDrive Landing Page — Project Specs
+# MotorLink Landing Page — Project Specs
 
 ## What the app does
-A single-page marketing/landing site for EZDrive — an OBD-II scanner + app that translates cryptic car fault codes into plain English. Visitors can learn about the product, see pricing, and pre-order via a form.
+A single-page marketing/landing site for MotorLink — an OBD-II scanner + app that translates cryptic car fault codes into plain English. Visitors can learn about the product, see pricing, and pre-order via a form.
 
 ## Who uses it
 Car owners (1996+ gas vehicles) who want clarity on warning lights without needing mechanic expertise. Three customer segments: Solo (1 car), Family (up to 4 cars), and Fleets (SMB).
@@ -17,7 +17,7 @@ Car owners (1996+ gas vehicles) who want clarity on warning lights without needi
 - `/` — Single landing page with all sections
 
 ## Sections (top to bottom)
-1. **Nav** — Sticky, links to sections, "Get EZDrive →" CTA button
+1. **Nav** — Sticky, links to sections, "Get MotorLink →" CTA button
 2. **Hero** — Headline, subtext, CTAs, trust strip, OBD animation card
 3. **Features** — 3×2 grid of coloured feature cards (Pink, Teal, Lavender, Peach, Ochre, Cream)
 4. **Benefits** — Split: smart triage mock UI left, benefit bullets right
@@ -62,5 +62,3 @@ Car owners (1996+ gas vehicles) who want clarity on warning lights without needi
 - `npm run build` passes with no TypeScript errors
 - `npm run dev` serves at localhost:3000 with all sections rendered
 - All GSAP animations trigger correctly on scroll and page load
-- OBD animation loops seamlessly
-- Pre-order form POSTs to `/api/preorder`, row appears in Vercel Postgres, success state shown
