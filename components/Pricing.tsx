@@ -172,7 +172,7 @@ export default function Pricing() {
               onClick={() => setPlan("Solo")}
               style={{ width: "100%" }}
             >
-              Get Solo
+              Join waitlist — Solo
             </a>
           </div>
 
@@ -251,7 +251,7 @@ export default function Pricing() {
               onClick={() => setPlan("Family")}
               style={{ width: "100%" }}
             >
-              Get Family
+              Join waitlist — Family
             </a>
           </div>
         </div>
@@ -317,7 +317,7 @@ export default function Pricing() {
               onClick={() => setPlan("Fleet")}
               style={{ whiteSpace: "nowrap" }}
             >
-              Get Fleet
+              Join waitlist — Fleet
             </a>
           </div>
         </div>

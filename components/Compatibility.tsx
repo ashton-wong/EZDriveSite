@@ -90,7 +90,7 @@ export default function Compatibility() {
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 32 }}>
             <a className="btn btn-primary" href="#preorder">
-              Get MotorLink →
+              Join the waitlist →
             </a>
           </div>
         </div>

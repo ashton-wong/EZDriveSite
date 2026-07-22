@@ -72,7 +72,7 @@ export default function Footer() {
           {/* Brand col */}
           <div style={{ opacity: 0 }}>
             <Image
-              src="/ezdrive-logo.png"
+              src="/motor-link-logo.png"
               alt="MotorLink"
               width={110}
               height={30}

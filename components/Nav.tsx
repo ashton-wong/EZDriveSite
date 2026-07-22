@@ -63,9 +63,9 @@ export default function Nav() {
           gap: 32,
         }}
       >
-        <a ref={logoRef} href="#" style={{ display: "block", flexShrink: 0 }}>
+        <a ref={logoRef} href="#" style={{ display: "block", flex: 1 }}>
           <Image
-            src="/motorlink-logo.png"
+            src="/motor-link-logo.png"
             alt="MotorLink"
             width={48}
             height={48}
@@ -115,9 +115,9 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div ref={ctaRef} style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+        <div ref={ctaRef} style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 16, flex: 1 }}>
           <a className="btn btn-primary" href="#preorder">
-            Get MotorLink →
+            Join the waitlist →
           </a>
         </div>
       </nav>
