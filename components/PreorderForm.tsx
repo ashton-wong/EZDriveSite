@@ -110,7 +110,7 @@ export default function PreorderForm() {
   return (
     <section
       ref={sectionRef}
-      id="preorder"
+      id="waitlist"
       className="preorder-section"
       style={{
         background: "var(--color-surface-dark)",

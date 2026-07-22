@@ -89,7 +89,7 @@ export default function Compatibility() {
             on US roads. MotorLink plugs into all of them.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 32 }}>
-            <a className="btn btn-primary" href="#preorder">
+            <a className="btn btn-primary" href="/#waitlist">
               Join the waitlist →
             </a>
           </div>

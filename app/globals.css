@@ -322,4 +322,7 @@ body {
 
   /* Pre-order */
   .preorder-section { padding: 64px 20px !important; }
+
+  /* Legal pages */
+  .legal-section   { padding: 56px 20px !important; }
 }

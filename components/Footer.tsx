@@ -13,6 +13,9 @@ const LINKS = {
   Support: ["Help center", "Setup guide", "Returns", "Privacy", "Terms"],
 };
 
+// ponytail: only the pages that exist get a real href
+const HREFS: Record<string, string> = { Privacy: "/privacy" };
+
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -103,7 +106,7 @@ export default function Footer() {
                 {items.map((item) => (
                   <li key={item}>
                     <a
-                      href="#"
+                      href={HREFS[item] ?? "#"}
                       style={linkStyle}
                       onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = "0.55")}
                       onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = "1")}
@@ -188,7 +191,12 @@ export default function Footer() {
             ))}
           </div>
 
-          <span>Terms &amp; Conditions · Privacy Policy</span>
+          <span>
+            Terms &amp; Conditions ·{" "}
+            <a href="/privacy" style={{ color: "inherit", textDecoration: "none" }}>
+              Privacy Policy
+            </a>
+          </span>
         </div>
       </div>
     </footer>

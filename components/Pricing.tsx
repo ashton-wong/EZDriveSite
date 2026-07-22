@@ -168,7 +168,7 @@ export default function Pricing() {
             </ul>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Solo")}
               style={{ width: "100%" }}
             >
@@ -247,7 +247,7 @@ export default function Pricing() {
             </ul>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Family")}
               style={{ width: "100%" }}
             >
@@ -313,7 +313,7 @@ export default function Pricing() {
             </div>
             <a
               className="btn btn-on-color"
-              href="#preorder"
+              href="/#waitlist"
               onClick={() => setPlan("Fleet")}
               style={{ whiteSpace: "nowrap" }}
             >
