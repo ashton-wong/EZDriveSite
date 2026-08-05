@@ -115,7 +115,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     titleColor: "#0a0a0a",
     bodyColor: "rgba(10,10,10,0.65)",
     title: "Maintenance memory",
-    body: "Oil at 7,500. Tires at 25,000. Brakes when the pads talk back. MotorLink tracks it so you don't.",
+    body: "Oil at 7,500. Tires at 25,000. Brakes when the pads talk back. Plover tracks it so you don't.",
     icon: <CalendarIcon color="#0a0a0a" />,
   },
   {
@@ -126,7 +126,7 @@ const FEATURE_CARDS: FeatureCard[] = [
     titleColor: "#0a0a0a",
     bodyColor: "rgba(10,10,10,0.65)",
     title: "Trip log",
-    body: "Every drive saved automatically. A backlog of data so MotorLink can detect patterns before your car even makes a sound.",
+    body: "Every drive saved automatically. A backlog of data so Plover can detect patterns before your car even makes a sound.",
     icon: <MapPinIcon color="#0a0a0a" />,
   },
   {
@@ -211,7 +211,7 @@ export default function Features() {
               marginBottom: 16,
             }}
           >
-            What MotorLink does
+            What Plover does
           </div>
           <h2
             style={{

@@ -279,7 +279,7 @@ export default function OBDAnimation() {
         <div ref={codesListRef} className="hz-codes-list" />
       </div>
 
-      {/* Center: MotorLink hub */}
+      {/* Center: Plover hub */}
       <div className="hz-center-col">
         <div className="hz-vert-line" />
         <div ref={hubRef} className="hz-hub">
@@ -304,7 +304,7 @@ export default function OBDAnimation() {
 
       {/* Right: Plain English output */}
       <div className="hz-eng">
-        <div className="hz-zone-label">MotorLink says</div>
+        <div className="hz-zone-label">Plover says</div>
         <div className="hz-eng-body">
           <div className="hz-eng-text">
             <div ref={engMainRef} className="hz-eng-main" />

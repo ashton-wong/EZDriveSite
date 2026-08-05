@@ -338,7 +338,7 @@ export default function PreorderForm() {
             You&apos;re on the list.
           </div>
           <div style={{ fontSize: 14, color: "rgba(255,255,255,0.5)" }}>
-            We&apos;ll email you as soon as MotorLink is ready for you.
+            We&apos;ll email you as soon as Plover is ready for you.
           </div>
         </div>
       </div>

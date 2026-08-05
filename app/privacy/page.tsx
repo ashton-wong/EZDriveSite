@@ -8,27 +8,27 @@ const SUPPORT_EMAIL = "ashwong8@hotmail.com";
 const RETENTION_WINDOW = "30 days";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — MotorLink",
+  title: "Privacy Policy — Plover",
   description:
-    "How MotorLink handles your data during the Apple TestFlight beta.",
+    "How Plover handles your data during the Apple TestFlight beta.",
 };
 
 const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "1. Who This App Is For",
     body: [
-      "MotorLink is used in two ways: by individual drivers monitoring their own vehicle, and by parents/guardians or fleet managers monitoring a linked teen driver's or employee driver's vehicle activity. If you are a teen driver or employee driver whose account is linked to a parent/guardian or fleet manager, that linked party can view your drive activity as described in Section 3.",
-      "MotorLink is not intended for use by children under 13, and teen driver accounts must be set up and linked by a parent or guardian, not created independently by a minor. By linking a teen driver account, the parent or guardian confirms they have the authority to consent to that driver's data being collected and shared as described here.",
+      "Plover is used in two ways: by individual drivers monitoring their own vehicle, and by parents/guardians or fleet managers monitoring a linked teen driver's or employee driver's vehicle activity. If you are a teen driver or employee driver whose account is linked to a parent/guardian or fleet manager, that linked party can view your drive activity as described in Section 3.",
+      "Plover is not intended for use by children under 13, and teen driver accounts must be set up and linked by a parent or guardian, not created independently by a minor. By linking a teen driver account, the parent or guardian confirms they have the authority to consent to that driver's data being collected and shared as described here.",
       "Monitoring is never silent. Every monitored driver is shown, inside the app, who their account is linked to and what that party can see. Fleet managers are responsible for obtaining any employee consent or notice their local law requires before linking a driver.",
     ],
   },
   {
     title: "2. Data We Collect and How We Use It",
     body: [
-      "Bluetooth: MotorLink requires access to your device's Bluetooth to connect locally to your vehicle's physical OBD-II scanner.",
+      "Bluetooth: Plover requires access to your device's Bluetooth to connect locally to your vehicle's physical OBD-II scanner.",
       "Location: We request the \"Always\" Location Services permission, and we do not track, record, transmit, or store your GPS location or geographic coordinates at any point. The location fixes iOS provides are discarded the moment we receive them — no part of the app reads them.",
       "The permission exists for one technical reason: iOS suspends an app's timers as soon as it moves to the background, and recording a drive requires continuously polling the OBD-II scanner for the entire trip. Background App Refresh cannot do this — it grants a brief wake roughly every 15 minutes, not a running process — and Bluetooth background mode alone is not enough either, because the scanner only answers when the app asks it a question. The background location mode is the only iOS facility that keeps the app running long enough to record a drive. \"Always\" specifically is required so that a drive can begin recording when you start driving without opening the app first; iOS only permits background-initiated updates under that setting.",
-      "If you decline this permission, MotorLink still works — you can record drives manually with the app open. You lose only automatic, hands-free trip recording.",
+      "If you decline this permission, Plover still works — you can record drives manually with the app open. You lose only automatic, hands-free trip recording.",
       "Vehicle and diagnostic data: The scanner reads vehicle telemetry (such as speed and RPM), diagnostic trouble codes, and your vehicle's VIN (Vehicle Identification Number), which is used to identify your vehicle's make and model for accurate diagnostics.",
       "Account data: When you create an account, we collect your email address, display name, and, for fleet accounts, an organization name.",
       "Push notification data: If you enable notifications, we collect a device push token (via Apple's and Expo's push notification services) to deliver drive alerts and digest summaries.",
@@ -38,7 +38,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
     title: "3. Cloud Storage and Account Linkage",
     body: [
       "The vehicle telemetry and diagnostic data read by the scanner is transmitted to and stored securely on our cloud servers, hosted via a Railway PostgreSQL database.",
-      "MotorLink supports two kinds of monitored relationships. In parent-monitored teen driving, drive telemetry from a teen driver's account is directly shared with and visible to the linked parent or guardian account. In fleet-monitored driving (B2B), drive telemetry from an employee driver's account is directly shared with and visible to the linked fleet manager account.",
+      "Plover supports two kinds of monitored relationships. In parent-monitored teen driving, drive telemetry from a teen driver's account is directly shared with and visible to the linked parent or guardian account. In fleet-monitored driving (B2B), drive telemetry from an employee driver's account is directly shared with and visible to the linked fleet manager account.",
       "Data is not shared with any third-party advertisers or data brokers, and is not sold.",
     ],
   },
@@ -78,7 +78,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "9. Changes to This Policy",
     body: [
-      "We may update this policy as MotorLink develops. If we make a material change to how we collect, use, or share your data, we will update the date at the top of this page and notify beta testers by email or in-app notice before the change takes effect.",
+      "We may update this policy as Plover develops. If we make a material change to how we collect, use, or share your data, we will update the date at the top of this page and notify beta testers by email or in-app notice before the change takes effect.",
     ],
   },
   {
@@ -140,7 +140,7 @@ export default function PrivacyPage() {
               borderTop: "1px solid var(--color-hairline)",
             }}
           >
-            This privacy policy applies to the beta version of MotorLink
+            This privacy policy applies to the beta version of Plover
             distributed via Apple TestFlight.
           </p>
 

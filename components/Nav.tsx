@@ -63,16 +63,44 @@ export default function Nav() {
           gap: 32,
         }}
       >
-        <a ref={logoRef} href="/" style={{ display: "block", flex: 1 }}>
+        <a
+          ref={logoRef}
+          href="/"
+          onClick={(e) => {
+            // ponytail: same-page scroll; href="/" stays as the fallback
+            if (window.location.pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0 });
+            }
+          }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            flex: 1,
+            textDecoration: "none",
+          }}
+        >
           <Image
-            src="/motor-link-logo.png"
-            alt="MotorLink"
+            src="/plover-logo.png"
+            alt=""
             width={48}
             height={48}
             className="nav-logo-img"
-            style={{ height: 48, width: "auto", mixBlendMode: "multiply" }}
+            style={{ height: 48, width: "auto" }}
             priority
           />
+          <span
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 22,
+              fontWeight: 600,
+              letterSpacing: "-0.01em",
+              color: "var(--color-brand-blue)",
+            }}
+          >
+            Plover
+          </span>
         </a>
 
         <ul

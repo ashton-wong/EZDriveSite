@@ -75,11 +75,11 @@ export default function Footer() {
           {/* Brand col */}
           <div style={{ opacity: 0 }}>
             <Image
-              src="/motor-link-logo.png"
-              alt="MotorLink"
-              width={110}
+              src="/plover-logo.png"
+              alt="Plover"
+              width={30}
               height={30}
-              style={{ height: 30, width: "auto", mixBlendMode: "multiply" }}
+              style={{ height: 30, width: "auto" }}
             />
             <p
               style={{
@@ -135,7 +135,7 @@ export default function Footer() {
             opacity: 0,
           }}
         >
-          <span>© 2026 MotorLink</span>
+          <span>© 2026 Plover</span>
 
           {/* Social icons */}
           <div style={{ display: "flex", gap: 12 }}>

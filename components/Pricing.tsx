@@ -53,7 +53,7 @@ export default function Pricing() {
   }, []);
 
   const BULLETS_SOLO = [
-    "MotorLink scanner included",
+    "Plover scanner included",
     "iOS & Android app",
     "Plain-English fault codes",
     "Maintenance reminders",

@@ -86,7 +86,7 @@ export default function Compatibility() {
             }}
           >
             Any gas car built after 1996 has an OBD-II port. That&apos;s over 250 million vehicles
-            on US roads. MotorLink plugs into all of them.
+            on US roads. Plover plugs into all of them.
           </p>
           <div style={{ display: "flex", gap: 12, marginTop: 32 }}>
             <a className="btn btn-primary" href="/#waitlist">

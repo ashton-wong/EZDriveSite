@@ -1,7 +1,7 @@
-# MotorLink Landing Page — Project Specs
+# Plover Landing Page — Project Specs
 
 ## What the app does
-A single-page marketing/landing site for MotorLink — an OBD-II scanner + app that translates cryptic car fault codes into plain English. Visitors can learn about the product, see pricing, and pre-order via a form.
+A single-page marketing/landing site for Plover — an OBD-II scanner + app that translates cryptic car fault codes into plain English. Visitors can learn about the product, see pricing, and pre-order via a form.
 
 ## Who uses it
 Car owners (1996+ gas vehicles) who want clarity on warning lights without needing mechanic expertise. Three customer segments: Solo (1 car), Family (up to 4 cars), and Fleets (SMB).
@@ -17,7 +17,7 @@ Car owners (1996+ gas vehicles) who want clarity on warning lights without needi
 - `/` — Single landing page with all sections
 
 ## Sections (top to bottom)
-1. **Nav** — Sticky, links to sections, "Get MotorLink →" CTA button
+1. **Nav** — Sticky, links to sections, "Get Plover →" CTA button
 2. **Hero** — Headline, subtext, CTAs, trust strip, OBD animation card
 3. **Features** — 3×2 grid of coloured feature cards (Pink, Teal, Lavender, Peach, Ochre, Cream)
 4. **Benefits** — Split: smart triage mock UI left, benefit bullets right
