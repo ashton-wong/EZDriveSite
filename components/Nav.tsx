@@ -117,7 +117,7 @@ export default function Nav() {
           {[
             { label: "Features", href: "/#features" },
             { label: "How it works", href: "/#how" },
-            { label: "Pricing", href: "/#pricing" },
+            { label: "Plans", href: "/#plans" },
             { label: "Compatibility", href: "/#stories" },
           ].map((link) => (
             <li key={link.href}>

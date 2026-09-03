@@ -311,7 +311,6 @@ body {
   /* Pricing */
   .pr-section      { padding: 64px 20px !important; }
   .pr-top-grid     { grid-template-columns: 1fr !important; }
-  .pr-fleet-row    { grid-template-columns: 1fr !important; gap: 24px !important; padding: 28px 24px !important; }
 
   /* Compatibility */
   .compat-section  { padding: 64px 20px !important; }

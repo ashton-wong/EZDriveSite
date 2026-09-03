@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const LINKS = {
-  Product: ["How it works", "Pricing", "Compatible cars", "iOS app", "Android app"],
+  Product: ["How it works", "Plans", "Compatible cars", "iOS app", "Android app"],
   Company: ["About", "Stories", "Press", "Careers", "Contact"],
   Support: ["Help center", "Setup guide", "Returns", "Privacy", "Terms"],
 };

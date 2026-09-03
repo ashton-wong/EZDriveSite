@@ -11,11 +11,49 @@ function setPlan(val: string) {
   if (sel) sel.value = val;
 }
 
+const PLANS = [
+  {
+    name: "Solo",
+    tagline: "Scanner + app for one car",
+    popular: false,
+    bullets: [
+      "Plover scanner included",
+      "iOS & Android app",
+      "Plain-English fault codes",
+      "Real-time vitals",
+      "Maintenance reminders",
+    ],
+  },
+  {
+    name: "Family",
+    tagline: "Up to 4 cars on one account",
+    popular: true,
+    bullets: [
+      "Everything in Solo",
+      "Up to 4 vehicles",
+      "Shared maintenance log",
+      "Multi-driver trip log",
+      "Priority support",
+    ],
+  },
+  {
+    name: "Fleets",
+    tagline: "Designed for SMB fleets",
+    popular: false,
+    bullets: [
+      "Everything in Family",
+      "A fleet manager in your pocket",
+      "Every vehicle on one dashboard",
+      "Keep your business on the road",
+      "Avoid unnecessary downtime",
+    ],
+  },
+];
+
 export default function Pricing() {
   const sectionRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
-  const topCardsRef = useRef<HTMLDivElement>(null);
-  const wideRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -28,48 +66,22 @@ export default function Pricing() {
         }
       );
 
-      const cards = topCardsRef.current?.querySelectorAll(".pr-card-item");
-      if (cards) {
-        gsap.fromTo(
-          cards,
-          { opacity: 0, y: 48, scale: 0.96 },
-          {
-            opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out", stagger: 0.15,
-            scrollTrigger: { trigger: topCardsRef.current, start: "top 82%" },
-          }
-        );
-      }
-
       gsap.fromTo(
-        wideRef.current,
-        { opacity: 0, y: 32 },
+        cardsRef.current?.querySelectorAll(".pr-card-item") ?? [],
+        { opacity: 0, y: 48, scale: 0.96 },
         {
-          opacity: 1, y: 0, duration: 0.65, ease: "power3.out",
-          scrollTrigger: { trigger: wideRef.current, start: "top 88%" },
+          opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "power3.out", stagger: 0.15,
+          scrollTrigger: { trigger: cardsRef.current, start: "top 82%" },
         }
       );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
-  const BULLETS_SOLO = [
-    "Plover scanner included",
-    "iOS & Android app",
-    "Plain-English fault codes",
-    "Maintenance reminders",
-  ];
-  const BULLETS_FAMILY = [
-    "Everything in Solo",
-    "Up to 4 vehicles",
-    "Shared maintenance log",
-    "Multi-driver trip log",
-    "Priority support",
-  ];
-
   return (
     <section
       ref={sectionRef}
-      id="pricing"
+      id="plans"
       className="pr-section"
       style={{
         background: "var(--color-ink)",
@@ -85,7 +97,7 @@ export default function Pricing() {
               textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 16,
             }}
           >
-            Simple pricing
+            Plans
           </div>
           <h2
             style={{
@@ -103,223 +115,97 @@ export default function Pricing() {
           </p>
         </div>
 
-        {/* Top cards */}
+        {/* Plan cards */}
         <div
-          ref={topCardsRef}
+          ref={cardsRef}
           className="pr-top-grid"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
-        >
-          {/* Solo */}
-          <div
-            className="pr-card-item"
-            style={{
-              background: "#161616", borderRadius: "var(--radius-lg)",
-              padding: 32, display: "flex", flexDirection: "column", gap: 32,
-              position: "relative", opacity: 0,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)", fontWeight: 500,
-                  fontSize: 28, letterSpacing: "-0.5px", color: "#fff",
-                }}
-              >
-                Solo
-              </div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>
-                Scanner + app for one car
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)", fontWeight: 500,
-                  fontSize: 48, letterSpacing: "-1.5px", color: "#fff", marginTop: 16,
-                }}
-              >
-                $14.99{" "}
-                <span
-                  style={{
-                    fontFamily: "var(--font-body)", fontSize: 14,
-                    fontWeight: 400, color: "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  per month
-                </span>
-              </div>
-            </div>
-            <ul
-              style={{
-                listStyle: "none", padding: 0, margin: 0,
-                display: "flex", flexDirection: "column", gap: 10, flex: 1,
-              }}
-            >
-              {BULLETS_SOLO.map((b) => (
-                <li
-                  key={b}
-                  style={{
-                    display: "flex", alignItems: "flex-start", gap: 12,
-                    fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.5,
-                  }}
-                >
-                  <span style={{ color: "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: 1 }}>→</span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-            <a
-              className="btn btn-on-color"
-              href="/#waitlist"
-              onClick={() => setPlan("Solo")}
-              style={{ width: "100%" }}
-            >
-              Join waitlist — Solo
-            </a>
-          </div>
-
-          {/* Family */}
-          <div
-            className="pr-card-item"
-            style={{
-              background: "var(--color-surface-dark-elev)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: "var(--radius-lg)",
-              padding: 32, display: "flex", flexDirection: "column", gap: 32,
-              position: "relative", opacity: 0,
-            }}
-          >
-            <div
-              style={{
-                position: "absolute", top: -12, left: 24,
-                background: "var(--color-brand-ochre)", color: "var(--color-ink)",
-                borderRadius: "var(--radius-pill)", padding: "4px 12px",
-                fontSize: 12, fontWeight: 600,
-              }}
-            >
-              Most popular
-            </div>
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)", fontWeight: 500,
-                  fontSize: 28, letterSpacing: "-0.5px", color: "#fff",
-                }}
-              >
-                Family
-              </div>
-              <div style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>
-                Up to 4 cars on one account
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)", fontWeight: 500,
-                  fontSize: 48, letterSpacing: "-1.5px", color: "#fff", marginTop: 16,
-                }}
-              >
-                $34.99{" "}
-                <span
-                  style={{
-                    fontFamily: "var(--font-body)", fontSize: 14,
-                    fontWeight: 400, color: "rgba(255,255,255,0.4)",
-                  }}
-                >
-                  per month
-                </span>
-              </div>
-            </div>
-            <ul
-              style={{
-                listStyle: "none", padding: 0, margin: 0,
-                display: "flex", flexDirection: "column", gap: 10, flex: 1,
-              }}
-            >
-              {BULLETS_FAMILY.map((b) => (
-                <li
-                  key={b}
-                  style={{
-                    display: "flex", alignItems: "flex-start", gap: 12,
-                    fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.5,
-                  }}
-                >
-                  <span style={{ color: "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: 1 }}>→</span>
-                  {b}
-                </li>
-              ))}
-            </ul>
-            <a
-              className="btn btn-on-color"
-              href="/#waitlist"
-              onClick={() => setPlan("Family")}
-              style={{ width: "100%" }}
-            >
-              Join waitlist — Family
-            </a>
-          </div>
-        </div>
-
-        {/* Fleets (wide) */}
-        <div
-          ref={wideRef}
-          className="pr-fleet-row"
           style={{
-            marginTop: 16,
-            background: "#0d0d0d",
-            border: "1px solid rgba(255,255,255,0.07)",
-            borderRadius: "var(--radius-lg)",
-            padding: "32px 40px",
             display: "grid",
-            gridTemplateColumns: "1fr auto",
-            gap: 48,
-            alignItems: "center",
-            opacity: 0,
+            // ponytail: auto-fit drops to 2-up then 1-up on its own, no extra breakpoint
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 16,
+            alignItems: "stretch",
           }}
         >
-          <div>
+          {PLANS.map((plan) => (
             <div
+              key={plan.name}
+              className="pr-card-item"
               style={{
-                fontFamily: "var(--font-display)", fontWeight: 500,
-                fontSize: 24, letterSpacing: "-0.4px", color: "#fff",
+                background: plan.popular ? "var(--color-surface-dark-elev)" : "#161616",
+                border: plan.popular
+                  ? "1px solid rgba(255,255,255,0.1)"
+                  : "1px solid rgba(255,255,255,0.04)",
+                borderRadius: "var(--radius-lg)",
+                padding: "36px 32px 32px",
+                display: "flex",
+                flexDirection: "column",
+                position: "relative",
+                opacity: 0,
               }}
             >
-              Fleets
-            </div>
-            <div
-              style={{
-                fontSize: 14, color: "rgba(255,255,255,0.45)", lineHeight: 1.6,
-                marginTop: 8, maxWidth: 540,
-              }}
-            >
-              A fleet manager in your pocket. Designed for SMB fleets. Keep your business on the road and avoid unnecessary vehicle downtime.
-            </div>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 32, flexShrink: 0 }}>
-            <div>
+              {plan.popular && (
+                <div
+                  style={{
+                    position: "absolute", top: -12, left: 24,
+                    background: "var(--color-brand-ochre)", color: "var(--color-ink)",
+                    borderRadius: "var(--radius-pill)", padding: "4px 12px",
+                    fontSize: 12, fontWeight: 600,
+                  }}
+                >
+                  Most popular
+                </div>
+              )}
+
               <div
                 style={{
                   fontFamily: "var(--font-display)", fontWeight: 500,
-                  fontSize: 40, letterSpacing: "-1px", color: "#fff", lineHeight: 1.2,
+                  fontSize: 28, letterSpacing: "-0.5px", color: "#fff",
                 }}
               >
-                $9.99
-                <br />
-                <span
-                  style={{
-                    fontFamily: "var(--font-body)", fontSize: 14,
-                    fontWeight: 400, color: "rgba(255,255,255,0.4)", letterSpacing: 0,
-                  }}
-                >
-                  per vehicle, per month
-                </span>
+                {plan.name}
               </div>
+              <div
+                style={{
+                  fontSize: 13, color: "rgba(255,255,255,0.45)",
+                  marginTop: 6, marginBottom: 24,
+                }}
+              >
+                {plan.tagline}
+              </div>
+
+              <ul
+                style={{
+                  listStyle: "none", padding: 0, margin: 0,
+                  display: "flex", flexDirection: "column", flex: 1,
+                }}
+              >
+                {plan.bullets.map((b) => (
+                  <li
+                    key={b}
+                    style={{
+                      display: "flex", alignItems: "flex-start", gap: 12,
+                      fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.5,
+                      padding: "14px 0",
+                      borderTop: "1px solid rgba(255,255,255,0.07)",
+                    }}
+                  >
+                    <span style={{ color: "rgba(255,255,255,0.3)", flexShrink: 0, marginTop: 1 }}>→</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                className="btn btn-on-color"
+                href="/#waitlist"
+                onClick={() => setPlan(plan.name === "Fleets" ? "Fleet" : plan.name)}
+                style={{ width: "100%", marginTop: 28 }}
+              >
+                Join waitlist — {plan.name === "Fleets" ? "Fleet" : plan.name}
+              </a>
             </div>
-            <a
-              className="btn btn-on-color"
-              href="/#waitlist"
-              onClick={() => setPlan("Fleet")}
-              style={{ whiteSpace: "nowrap" }}
-            >
-              Join waitlist — Fleet
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>
